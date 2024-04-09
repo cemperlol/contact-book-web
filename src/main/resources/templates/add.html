@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Book</title>
+  <link rel="stylesheet" href="css/common-style.css">
+  <link rel="stylesheet" href="css/add-style.css">
+</head>
+<body>
+  <div class="flex-container">
+    <form action="/add" method="post">
+      <div>
+        <label for="first-name">First name</label>
+        <input id="first-name" type="text" name="first-name" required th:value="${contact.first-name}"/>
+        
+        <label for="last-name">Last name</label>
+        <input id="last-name" type="text" name="last-name" required th:value="${contact.last-name}"/>
+
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" required th:value="${contact.email}"/>
+
+        <label for="phone-number">Phone number</label>
+        <input id="phone-number" type="tel" name="phone-number" required th:value="${contact.phone-number}"/>
+      </div>
+    </form>
+  </div>

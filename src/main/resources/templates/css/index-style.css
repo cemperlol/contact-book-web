@@ -1,0 +1,200 @@
+table {
+  width: 100%;
+  border-spacing: 5px 0;
+}
+
+th, td {
+  padding: 5px 0;
+  text-align: start;
+  background-color: white;
+}
+
+th {
+  font-size: larger;
+}
+
+th:first-child {
+  border-top-left-radius: 8px;
+}
+
+th:last-child {
+  border-top-right-radius: 8px;
+}
+
+tbody td, th {
+  padding: 0.5em;
+  color: rgb(79, 79, 79);
+}
+
+tr:nth-child(2n + 1) td {
+  background-color: rgba(225, 232, 236, 0.316);
+}
+
+
+tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+tfoot {
+  border: 0px;
+}
+
+.addition-button-flag {
+  display: flex;
+  justify-content: end;
+  width: 1165px;
+}
+
+.addition-button {
+  background-color: rgb(245, 245, 245);
+  border: none;
+  border-radius: 0 0 8px 8px;
+  padding: 5px 10px;
+  color: rgb(79, 79, 79);
+  transform-origin: bottom left;
+  transform: scale(0.8);
+  transition: ease-out 0.33s;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.addition-button.active {
+  background-color: lightgreen;
+  transform: scale(1);
+  opacity: 1;
+}
+
+.action-buttons-cell {
+  display: flex;
+  margin: auto;
+  justify-content: end;
+  transform-origin: bottom right;
+  transition: ease-out 0.33s;
+}
+
+.action-buttons-cell.active {
+  border-bottom-right-radius: 8px;
+  transform-origin: top left;
+  transition: ease-out 0.33s;
+}
+
+.action-button {
+  margin-right: 0.5em;
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 8px;
+  color: rgb(79, 79, 79);
+  cursor: pointer;
+}
+
+.action-button:last-child {
+  margin: 0px;
+}
+
+.action-button:first-child {
+  background-color: rgba(208, 208, 219, 0.755);
+}
+
+.action-button:last-child {
+  background-color: rgba(244, 77, 77, 0.629);
+}
+
+.button-hover-animated {
+  transition: ease-out 0.23s;
+}
+
+.button-hover-animated:hover {
+  filter: opacity(0.7);
+  transition: ease-out 0.23s;
+}
+
+a {
+  text-decoration: none;
+}
+
+h4 {
+  display: inline-block;
+  margin: 0;
+}
+
+.addition-tab {
+  padding: 10px 15px;
+  position: absolute;
+  background-color: lightgreen;
+  border-radius: 8px;
+  width: 1130px;
+  opacity: 1;
+  transform: scaleX(0.075) scaleY(0.21);
+  transform-origin: top right;
+  z-index: -2;
+  transition: step-start, 0.33s;
+}
+
+.addition-tab:hover {
+  opacity: 0;
+}
+
+.addition-tab.active {
+  opacity: 1;
+  transform: scale(1);
+  transition: ease-out, 0.33s;
+  z-index: 10;
+  pointer-events: all;
+}
+
+.addition-tab-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.addition-tab-title {
+  font-size: 1.25rem;
+}
+
+.addition-tab-header button {
+  padding: 0;
+  height: 25px;
+  width: 25px;
+  font-size: 24px;
+  border: 0px;
+  cursor: pointer;
+  background-color: #90ee90;
+}
+
+.addition-tab-form form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.addition-tab-form form input {
+  height: 25px;
+  width: 245px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  border: 0;
+  border-radius: 8px;
+  background-color: rgb(255, 255, 255);
+}
+
+.addition-tab-form form button {
+  height: 27px;
+  background-color: rgb(238, 170, 238);
+  border-radius: 8px;
+  border: 0px;
+  cursor: pointer;
+}
+
+.edit-tab {
+  display: flex;
+}
+
+.edit-tab-input {
+  position: fixed;
+  top: 0;
+  height: 25px;
+  width: 96%;
+  z-index: -1;
+}

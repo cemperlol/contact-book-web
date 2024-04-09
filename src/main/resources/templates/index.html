@@ -1,25 +1,100 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Contact Book</title>
+  <meta charset="UTF-8">
+  <title>Contact Book</title>
+  <link rel="stylesheet" href="css/common-style.css">
+  <link rel="stylesheet" href="css/index-style.css">
+  <script defer src="js/script.js"></script>
 </head>
+
 <body>
-  <table>
-    <tr>
-        <td>Id</td>
-        <td>Name</td>
-        <td>Surname</td>
-        <td>E-mail</td>
-        <td>Phone number</td>
-    </tr>
-    <tr th:each="contact : ${contacts}">
-        <td th:text="${contact.id}">Id</td>
-        <td th:text="${contact.name}">Name</td>
-        <td th:text="${contact.surname}">Surname</td>
-        <td th:text="${contact.email}">E-mail</td>
-        <td th:text="${contact.phoneNumber}">Phone number</td>
-    </tr>
-  </table>
+  <div class="flex-container">
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Surname</th>
+          <th>E-mail</th>
+          <th>Phone number</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>    
+        <tr th:each="contact : ${contacts}">
+          <form class="edit-tab" action="/edit" method="post">
+            <td th:text="${contact.id}">
+              Id
+            </td>
+            <td th:text="${contact.name}">
+              Name
+              <input class="edit-tab-input" type="text" name="first-name" placeholder="First name" required th:value="${contact.first-name}"/>
+            </td>
+            <td th:text="${contact.surname}">
+              <p>Surname</p>
+              <input class="edit-tab-input" type="text" name="last-name" placeholder="Last name" required th:value="${contact.last-name}"/>           
+            </td>
+            <td th:text="${contact.email}">
+              <p>E-mail</p>
+              <input class="edit-tab-input" type="email" name="email" placeholder="Email" required th:value="${contact.email}"/>              
+            </td>
+            <td th:text="${contact.phoneNumber}">
+              <p>Phone number</p>
+              <input class="edit-tab-input" type="tel" name="phone-number" placeholder="Phone number" required th:value="${contact.phone-number}"/>            
+            </td>
+            <td class="action-buttons-cell">
+              <button class="action-button button-hover-animated">edit</button>
+              <button class="action-button button-hover-animated">remove</button>
+            </td>      
+          </form>
+        </tr>
+      </tbody>
+
+    </table>
+
+    <div class="addition-button-flag">
+
+      <button data-addition-target="#addition-tab" class="addition-button button-hover-animated active">add contact</button>
+      
+      <div class="background-plug">.</div>
+      
+      <div class="addition-tab" id="addition-tab">
+        <div class="addition-tab-header">
+          <div class="addition-tab-title">
+            <h4>Addition tab</h4>
+          </div>
+          <button data-close-button class="close-button button-hover-animated">&times;</button>
+        </div>
+        
+        <div class="addition-tab-form">
+          <form action="/add" method="post">
+            <label for="first-name">
+              <input id="first-name" type="text" name="first-name" placeholder="First name" required th:value="${contact.first-name}"/>
+            </label>
+           
+            
+            <label for="last-name">
+              <input id="last-name" type="text" name="last-name" placeholder="Last name" required th:value="${contact.last-name}"/>          
+            </label>
+      
+            <label for="email">
+              <input id="email" type="email" name="email" placeholder="Email" required th:value="${contact.email}"/>              
+            </label>
+      
+            <label for="phone-number">
+              <input id="phone-number" type="tel" name="phone-number" placeholder="Phone number" required th:value="${contact.phone-number}"/>            
+            </label>
+            <button class="button-hover-animated" type="submit">submit</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
 </body>
 </html>
