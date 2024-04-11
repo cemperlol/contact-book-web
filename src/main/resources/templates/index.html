@@ -25,29 +25,78 @@
       </thead>
 
       <tbody>    
+        <!-- <tr th:each="contact : ${contacts}">
+            <td th:text="${contact.id}">
+              Id
+            </td>
+            <td th:text="${contact.name}">
+              <input class="edit-tab-input " type="text" name="first-name" placeholder="Name" required th:value="${contact.first-name}"/>
+            </td>
+            <td th:text="${contact.surname}">
+              <input class="edit-tab-input " type="text" name="last-name" placeholder="Surname" required th:value="${contact.last-name}"/>           
+            </td>
+            <td th:text="${contact.email}">
+              <input class="edit-tab-input " type="email" name="email" placeholder="E-mail" required th:value="${contact.email}"/>              
+            </td>
+            <td th:text="${contact.phoneNumber}">
+              <input class="edit-tab-input " type="tel" name="phone-number" placeholder="Phone number" required th:value="${contact.phone-number}"/>            
+            
+            </td>
+            <td class="action-buttons-cell">
+              <button class="action-button button-hover-animated">edit</button>
+              <button class="action-button button-hover-animated">remove</button>
+            </td>            
+        </tr> -->
         <tr th:each="contact : ${contacts}">
           <form class="edit-tab" action="/edit" method="post">
             <td th:text="${contact.id}">
               Id
             </td>
             <td th:text="${contact.name}">
-              Name
-              <input class="edit-tab-input" type="text" name="first-name" placeholder="First name" required th:value="${contact.first-name}"/>
+              <p>Name</p>
+              <input class="edit-tab-input invisible" type="text" name="first-name" placeholder="Name" required th:value="${contact.first-name}"/>
             </td>
             <td th:text="${contact.surname}">
               <p>Surname</p>
-              <input class="edit-tab-input" type="text" name="last-name" placeholder="Last name" required th:value="${contact.last-name}"/>           
+              <input class="edit-tab-input invisible" type="text" name="last-name" placeholder="Surname" required th:value="${contact.last-name}"/>           
             </td>
             <td th:text="${contact.email}">
               <p>E-mail</p>
-              <input class="edit-tab-input" type="email" name="email" placeholder="Email" required th:value="${contact.email}"/>              
+              <input class="edit-tab-input invisible" type="email" name="email" placeholder="E-mail" required th:value="${contact.email}"/>              
             </td>
             <td th:text="${contact.phoneNumber}">
               <p>Phone number</p>
-              <input class="edit-tab-input" type="tel" name="phone-number" placeholder="Phone number" required th:value="${contact.phone-number}"/>            
+              <input class="edit-tab-input invisible" type="tel" name="phone-number" placeholder="Phone number" required th:value="${contact.phone-number}"/>            
             </td>
             <td class="action-buttons-cell">
-              <button class="action-button button-hover-animated">edit</button>
+              <button data-edit-target=".edit-tab-input" class="action-button edit-button button-hover-animated" type="button">edit</button>
+              <button class="action-button button-hover-animated">remove</button>
+            </td>      
+          </form>
+        </tr>
+        <tr th:each="contact : ${contacts}">
+          <form class="edit-tab" action="/edit" method="post">
+            <td th:text="${contact.id}">
+              Id
+            </td>
+            <td th:text="${contact.name}">
+              <p>Name</p>
+              <input class="edit-tab-input invisible" type="text" name="first-name" placeholder="Name" required th:value="${contact.first-name}"/>
+            </td>
+            <td th:text="${contact.surname}">
+              <p>Surname</p>
+              <input class="edit-tab-input invisible" type="text" name="last-name" placeholder="Surname" required th:value="${contact.last-name}"/>           
+            </td>
+            <td th:text="${contact.email}">
+              <p>E-mail</p>
+              <input class="edit-tab-input invisible" type="email" name="email" placeholder="E-mail" required th:value="${contact.email}"/>              
+            </td>
+            <td th:text="${contact.phoneNumber}">
+              <p>Phone number</p>
+              <input class="edit-tab-input invisible" type="tel" name="phone-number" placeholder="Phone number" required th:value="${contact.phone-number}"/>            
+            </td>
+            <td class="action-buttons-cell">
+              <button data-edit-target=".edit-tab-input" class="action-button edit-button button-hover-animated" type="button">edit</button>
               <button class="action-button button-hover-animated">remove</button>
             </td>      
           </form>
