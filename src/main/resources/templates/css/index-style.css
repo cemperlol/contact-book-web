@@ -4,7 +4,6 @@ table {
 }
 
 th, td {
-
   padding: 5px 0;
   text-align: start;
   background-color: white;
@@ -25,10 +24,11 @@ th:last-child {
 tbody td, th {
   padding: 0.5em;
   color: rgb(79, 79, 79);
+  transition: ease-out, 0.33s;
 }
 
 tr:nth-child(2n + 1) td {
-  background-color: rgba(225, 232, 236, 0.316);
+  background-color: #e1e8ec51;
 }
 
 
@@ -80,24 +80,21 @@ tfoot {
 }
 
 .action-button {
-  margin-right: 0.5em;
   padding: 5px 10px;
   border: 0;
   border-radius: 8px;
   color: rgb(79, 79, 79);
   cursor: pointer;
+  transition: ease-out, 0.33s;
 }
 
-.action-button:last-child {
-  margin: 0px;
+.remove-button {
+  margin-left: 8px;
+  background-color: #f44d4da0;
 }
 
-.action-button:first-child {
-  background-color: rgba(208, 208, 219, 0.755);
-}
-
-.action-button:last-child {
-  background-color: rgba(244, 77, 77, 0.629);
+.edit-button {
+  background-color: #d0d0dbc1;
 }
 
 .button-hover-animated {
@@ -177,15 +174,30 @@ h4 {
   padding-left: 10px;
   border: 0;
   border-radius: 8px;
-  background-color: rgb(255, 255, 255);
+  background-color: #ffffff;
 }
 
 .addition-tab-form form button {
   height: 23px;
-  background-color: rgb(238, 170, 238);
+  background-color: #eeaaee;
   border-radius: 8px;
   border: 0px;
   cursor: pointer;
+}
+
+.contact-info {
+  display: inline-block;
+  width: 120px;
+  margin: 0;
+  padding: 0;
+  transition: ease-out, 0.33s;
+}
+
+.contact-info-id {
+  display: inline-block;
+  width: 5px;
+  margin: 0;
+  padding: 0;
 }
 
 .edit-tab {
@@ -194,21 +206,47 @@ h4 {
 
 .edit-tab-input {
   display: block;
+  position: absolute;
   margin: 0;
-  padding-left: 5px;
-  height: 23px;
+  margin-top: -21px;
+  height: 21px;
   font-size: 16px;
+  color: white;
   border: 0px;
   border-radius: 8px;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.0);
+  outline: none;
+  font-family: 'Roboto';
+  transition: ease-out, 0.33s;
 }
 
-tr:nth-child(2n + 1) .edit-tab-input {
-  background-color: rgba(225, 232, 236, 0);
+::placeholder {
+  color: white
 }
 
 .invisible {
-  display: none;
-  pointer-events: none;
   transition: ease-out, 0.33s;
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.edit-action-button {
+  position: absolute;
+  margin: 0;
+  margin-left: -56px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: ease-out, 0.33s;
+}
+
+.action-buttons-cell div:first-child .edit-action-button {
+  margin-left: -53px;
+  background-color: #eeaaee;
+}
+
+.action-buttons-cell div:last-child .edit-action-button {
+  background-color: #f44d4da0;
 }
