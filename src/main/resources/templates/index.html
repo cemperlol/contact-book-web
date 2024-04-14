@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Contact Book</title>
-  <link rel="stylesheet" href="css/common-style.css">
-  <link rel="stylesheet" href="css/index-style.css">
-  <script defer src="js/script.js"></script>
+  <link rel="stylesheet" href="/css/common-style.css">
+  <link rel="stylesheet" href="/css/index-style.css">
+  <script defer src="/js/script.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
@@ -16,37 +16,39 @@
 
       <thead>
         <tr>
-          <th>Id</th>
+          <th class="contact-id-title">Id</th>
           <th>Name</th>
           <th>Surname</th>
           <th>E-mail</th>
           <th>Phone number</th>
-          <th>Actions</th>
+          <th class="contact-actions-title">Actions</th>
         </tr>
       </thead>
 
       <tbody>    
 
         <tr th:each="contact : ${contacts}">
-          <form class="edit-tab" action="/edit" method="post">
-            <td th:text="${contact.id}">
-              <p class="contact-info-id">Id</p>
+          <form class="edit-tab" th:action="@{/edit}" method="post">
+
+            <td>
+              <p class="contact-info-id" th:text="${contact.id}">Id</p>
+              <input type="hidden" name="id" required th:value="${contact.id}" value="Id">
             </td>
-            <td class="editable-info" th:text="${contact.name}">
-              <p class="contact-info">Name</p>
-              <input class="edit-tab-input invisible" type="text" name="first-name" placeholder="Name" required th:value="${contact.first-name}" value="Name"/>
+            <td class="editable-info">
+              <p class="contact-info" th:text="${contact.firstName}">Name</p>
+              <input class="edit-tab-input invisible" type="text" name="firstName" placeholder="Name" required th:value="${contact.firstName}" value="Name"/>
             </td>
-            <td class="editable-info" th:text="${contact.surname}">
-              <p class="contact-info">Surname</p>
-              <input class="edit-tab-input invisible" type="text" name="last-name" placeholder="Surname" required th:value="${contact.last-name}" value="Surname"/>           
+            <td class="editable-info">
+              <p class="contact-info" th:text="${contact.lastName}">Surname</p>
+              <input class="edit-tab-input invisible" type="text" name="lastName" placeholder="Surname" required th:value="${contact.lastName}" value="Surname"/>
             </td>
-            <td class="editable-info" th:text="${contact.email}">
-              <p class="contact-info">E-mail</p>
-              <input class="edit-tab-input invisible" type="email" name="email" placeholder="E-mail" required th:value="${contact.email}" value="E-mail"/>              
+            <td class="editable-info">
+              <p class="contact-info" th:text="${contact.email}">E-mail</p>
+              <input class="edit-tab-input invisible" type="email" name="email" placeholder="E-mail" required th:value="${contact.email}" value="E-mail"/>
             </td>
-            <td class="editable-info" th:text="${contact.phoneNumber}">
-              <p class="contact-info">Phone number</p>
-              <input class="edit-tab-input invisible" type="tel" name="phone-number" placeholder="Phone number" required th:value="${contact.phone-number}" value="Phone number"/>            
+            <td class="editable-info">
+              <p class="contact-info" th:text="${contact.phoneNumber}">Phone number</p>
+              <input class="edit-tab-input invisible" type="tel" name="phoneNumber" placeholder="Phone number" required th:value="${contact.phoneNumber}" value="Phone number"/>
             </td>
             <td class="action-buttons-cell">
               <div>
@@ -54,10 +56,10 @@
                 <button class="edit-action-button button-hover-animated invisible" type="submit">submit</button>
               </div>
               <div>
-                <button class="action-button remove-button button-hover-animated" type="reset">remove</button>
+                <a th:href="@{/delete/{id}(id=${contact.id})}"><button class="action-button remove-button button-hover-animated" type="reset" >remove</button></a>
                 <button data-edit-cancel class="edit-action-button button-hover-animated invisible" type="reset">cancel</button>
               </div>
-            </td>      
+            </td>
           </form>
         </tr>
 
@@ -80,14 +82,13 @@
         </div>
         
         <div class="addition-tab-form">
-          <form action="/add" method="post">
+          <form action="/create" method="post">
             <label for="first-name">
-              <input id="first-name" type="text" name="first-name" placeholder="First name" required th:value="${contact.first-name}"/>
+              <input id="first-name" type="text" name="firstName" placeholder="First name" required th:value="${contact.firstName}"/>
             </label>
-           
             
             <label for="last-name">
-              <input id="last-name" type="text" name="last-name" placeholder="Last name" required th:value="${contact.last-name}"/>          
+              <input id="last-name" type="text" name="lastName" placeholder="Last name" required th:value="${contact.lastName}"/>
             </label>
       
             <label for="email">
@@ -95,7 +96,7 @@
             </label>
       
             <label for="phone-number">
-              <input id="phone-number" type="tel" name="phone-number" placeholder="Phone number" required th:value="${contact.phone-number}"/>            
+              <input id="phone-number" type="tel" name="phoneNumber" placeholder="Phone number" required th:value="${contact.phoneNumber}"/>
             </label>
             <button class="button-hover-animated" type="submit">submit</button>
           </form>

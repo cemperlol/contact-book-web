@@ -6,6 +6,6 @@ spring:
     hikari:
       schema: contacts_schema
 
-logging:
-  level:
-    root: debug
+#logging:
+#  level:
+#    root: debug
