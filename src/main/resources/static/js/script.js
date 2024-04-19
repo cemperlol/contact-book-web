@@ -7,6 +7,14 @@ $(document).ready(function() {
   if (document.querySelectorAll(".action-buttons-cell").length === 0) {
     document.querySelector(".contact-id-title").style.borderBottomLeftRadius = "8px"
   }
+  let contactInfoDivs = document.querySelectorAll('.editable-info div')
+  contactInfoDivs.forEach(contactInfoDiv => {
+    let contactInfo = contactInfoDiv.querySelector('.contact-info')
+    let editTabInput = contactInfoDiv.querySelector('.edit-tab-input')
+    editTabInput.style.width = "max(" + contactInfo.clientWidth + "px, " + contactInfoDiv.clientWidth + "px)"
+    editTabInput.style.height = contactInfo.clientHeight + "px"
+    editTabInput.style.transform = "translateX(-2px) translateY(calc(-" + editTabInput.clientHeight + "px + 2px))"
+  })
 })
 
 openAdditionButtons.forEach(button => {
@@ -51,7 +59,7 @@ editButtons.forEach(button => {
     let row = button.closest('tr')
     let $row = $(row);
     let columns = row.querySelectorAll('.editable-info')
-    let inputs = row.querySelectorAll('input')
+    let inputs = row.querySelectorAll('textarea')
     let paragraphs = row.querySelectorAll('.contact-info')
     let editButton = row.querySelector('.edit-button')
     let removeButton = row.querySelector('.remove-button')
@@ -85,7 +93,7 @@ cancelButtons.forEach(button => {
     let row = button.closest('tr')
     let $row = $(row)
     let columns = row.querySelectorAll('td')
-    let inputs = row.querySelectorAll('input')
+    let inputs = row.querySelectorAll('textarea')
     let paragraphs = row.querySelectorAll('.contact-info')
     let editButton = row.querySelector('.edit-button')
     let removeButton = row.querySelector('.remove-button')

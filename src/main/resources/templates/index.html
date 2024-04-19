@@ -25,32 +25,48 @@
         </tr>
       </thead>
 
-      <tbody>    
+      <tbody>
 
-        <tr th:each="contact : ${contacts}">
-          <form class="edit-tab" th:action="@{/edit}" method="post">
+      <tr th:each="contact : ${contacts}">
+        <form class="edit-tab" th:action="@{/edit}" method="post">
 
-            <td>
+          <td>
+            <div>
               <p class="contact-info-id" th:text="${contact.id}">Id</p>
               <input type="hidden" name="id" required th:value="${contact.id}" value="Id">
-            </td>
-            <td class="editable-info">
+            </div>
+          </td>
+
+          <td class="editable-info">
+            <div>
               <p class="contact-info" th:text="${contact.firstName}">Name</p>
-              <input class="edit-tab-input invisible" type="text" name="firstName" placeholder="Name" required th:value="${contact.firstName}" value="Name"/>
-            </td>
-            <td class="editable-info">
+              <textarea class="edit-tab-input invisible" name="firstName" placeholder="Name" required th:text="${contact.firstName}" wrap="hard">Name</textarea>
+            </div>
+          </td>
+
+          <td class="editable-info">
+            <div>
               <p class="contact-info" th:text="${contact.lastName}">Surname</p>
-              <input class="edit-tab-input invisible" type="text" name="lastName" placeholder="Surname" required th:value="${contact.lastName}" value="Surname"/>
-            </td>
-            <td class="editable-info">
+              <textarea class="edit-tab-input invisible" name="lastName" placeholder="Surname" required th:text="${contact.lastName}" wrap="hard">Surname</textarea>
+            </div>
+          </td>
+
+          <td class="editable-info">
+            <div>
               <p class="contact-info" th:text="${contact.email}">E-mail</p>
-              <input class="edit-tab-input invisible" type="email" name="email" placeholder="E-mail" required th:value="${contact.email}" value="E-mail"/>
-            </td>
-            <td class="editable-info">
+              <textarea class="edit-tab-input invisible" name="email" placeholder="E-mail" required th:text="${contact.email}" wrap="hard">E-mail</textarea>
+            </div>
+          </td>
+
+          <td class="editable-info">
+            <div>
               <p class="contact-info" th:text="${contact.phoneNumber}">Phone number</p>
-              <input class="edit-tab-input invisible" type="tel" name="phoneNumber" placeholder="Phone number" required th:value="${contact.phoneNumber}" value="Phone number"/>
-            </td>
-            <td class="action-buttons-cell">
+              <textarea class="edit-tab-input invisible" name="phoneNumber" placeholder="Phone number" required th:text="${contact.phoneNumber}" wrap="hard">Phone number</textarea>
+            </div>
+          </td>
+
+          <td class="action-buttons-cell">
+            <div class="action-buttons-div">
               <div>
                 <button data-edit-target=".edit-tab-input" class="action-button edit-button button-hover-animated" type="button">edit</button>
                 <button class="edit-action-button button-hover-animated invisible" type="submit">submit</button>
@@ -59,9 +75,11 @@
                 <a th:href="@{/delete/{id}(id=${contact.id})}"><button class="action-button remove-button button-hover-animated" type="reset" >remove</button></a>
                 <button data-edit-cancel class="edit-action-button button-hover-animated invisible" type="reset">cancel</button>
               </div>
-            </td>
-          </form>
-        </tr>
+            </div>
+          </td>
+
+        </form>
+      </tr>
 
       </tbody>
 

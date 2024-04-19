@@ -4,6 +4,7 @@ table {
 }
 
 th, td {
+  max-width: 120px;
   padding: 5px 0;
   text-align: start;
   background-color: white;
@@ -65,10 +66,19 @@ tfoot {
   opacity: 1;
 }
 
-.action-buttons-cell {
+.action-buttons-div {
   display: flex;
   margin: auto;
   justify-content: end;
+  transform-origin: bottom right;
+  transition: ease-out 0.33s;
+}
+
+td {
+  vertical-align: top;
+}
+
+.action-buttons-cell {
   transform-origin: bottom right;
   transition: ease-out 0.33s;
 }
@@ -87,6 +97,11 @@ tfoot {
   font-size: 13px;
   cursor: pointer;
   transition: ease-out, 0.33s;
+}
+
+.action-button.invisible {
+  transform-origin: left;
+  scale: 0.7;
 }
 
 .remove-button {
@@ -192,9 +207,10 @@ h4 {
 
 .contact-info {
   display: inline-block;
-  max-width: 120px;
+  max-width: 100%;
   margin: 0;
   padding: 0;
+  word-wrap: break-word;
   transition: ease-out, 0.33s;
 }
 
@@ -210,16 +226,17 @@ h4 {
 .edit-tab-input {
   display: block;
   position: absolute;
-  margin: -21px 0 0;
-  height: 21px;
   font-size: 16px;
   color: white;
-  border: 0px;
+  border: 0;
   border-radius: 8px;
   background-color: rgba(0, 0, 0, 0.0);
+  overflow: hidden;
+  resize: none;
   outline: none;
-  transition: ease-out, 0.33s;
   z-index: 1;
+  transition: ease-out, 0.33s;
+  font-family: 'Roboto';
 }
 
 .edit-tab-input::placeholder {
@@ -227,28 +244,33 @@ h4 {
 }
 
 .invisible {
-  transition: ease-out, 0.33s;
   opacity: 0;
   z-index: -1;
   pointer-events: none;
+  transition: ease-out, 0.33s;
 }
 
 .edit-action-button {
   position: absolute;
   margin: 0;
-  margin-left: -58px;
   padding: 5px 10px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  transform: translateX(-59px);
   transition: ease-out, 0.33s;
 }
 
-.action-buttons-cell div:first-child .edit-action-button {
-  margin-left: -53px;
-  background-color: #eeaaee;
+.edit-action-button.invisible {
+  transform-origin: left;
+  scale: 0.7;
 }
 
-.action-buttons-cell div:last-child .edit-action-button {
+.action-buttons-div div:first-child .edit-action-button {
+  background-color: #eeaaee;
+  transform: translateX(-54px);
+}
+
+.action-buttons-div div:last-child .edit-action-button {
   background-color: #f44d4da0;
 }
